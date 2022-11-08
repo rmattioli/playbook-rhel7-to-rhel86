@@ -1,0 +1,19 @@
+---
+
+- hosts: 172.31.6.200 #all #172.31.234.60
+
+  tasks:
+    - name: cockpit start
+      shell: service cockpit start
+
+    - name: Generate leapp preupgrade report
+      ansible.builtin.raw: leapp preupgrade
+      ignore_errors: false
+      register: leapp_preupgrade
+      become: true
+
+    - name: Generate leapp upgrade report
+      ansible.builtin.raw: leapp upgrade  --target=8.6
+      ignore_errors: false
+      register: leapp_upgrade  --target=8.6
+      become: true
