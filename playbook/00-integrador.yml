@@ -15,4 +15,4 @@
     - import_tasks: ../task/03-install-leapp.yml
     - import_tasks: ../task/04-leapp-audit.yml
     - import_tasks: ../task/05-install.yml
-    #- import_tasks: ../task/06-CheckPostUpgrade.yml
+    - import_tasks: ../task/06-CheckPostUpgrade.yml

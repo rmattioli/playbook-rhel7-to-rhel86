@@ -13,9 +13,9 @@
 
   - name: Copy leapp file
     ansible.builtin.copy:
-      src: "{{ download_url}}"
-      dest: "{{ download_folder}}"
+      src: "leapp-data18.tar.gz"
+      dest: "/tmp"
 
   - name: Descompress leapp file
-    shell: cd "{{ download_folder}}"; tar -zxvf "{{download_url}}"
+    shell: tar -zxvf "/tmp/leapp-data18.tar.gz -C /etc/leapp/files"
 

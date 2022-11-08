@@ -1,6 +1,6 @@
 ---
 - block:
-  - name: pp
+  - name: leaap inhi...
     shell: |
       rmmod pata_acpi;
       leapp answer --section remove_pam_pkcs11_module_check.confirm=True;
