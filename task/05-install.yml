@@ -16,3 +16,8 @@
 
   # ----------------------------------------
   - import_tasks: ../task/reboot.yml
+  rescue:
+    - name: Print when errors
+      ansible.builtin.debug:
+        msg: 'I caught an error, can do stuff here to fix it, :-)'
+

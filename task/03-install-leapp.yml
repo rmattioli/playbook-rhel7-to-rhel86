@@ -1,6 +1,6 @@
 ---
 
-- bock:
+- block:
   - name: Install packages
     ansible.builtin.yum:
       name:
