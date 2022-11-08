@@ -2,6 +2,7 @@
 - block:
   - name: Preparing a RHEL 7 system for the upgrade
     shell:
+         rpm -Uvh http://srvsatellite-prod.macro.com.ar/pub/katello-ca-consumer-latest.noarch.rpm --force;
          subscription-manager refresh;
          subscription-manager release;
          subscription-manager attach --auto;
