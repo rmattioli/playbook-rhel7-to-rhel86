@@ -14,3 +14,4 @@
     when:
       subscription-manager list | grep Version | grep -q "7.9"
       subscription-manager list | grep Status | grep -q "Subscribed"
+      subscription-manager identity | grep -qw "environment name\:\ UpdateRHEL7a8/Migracion7a8"
