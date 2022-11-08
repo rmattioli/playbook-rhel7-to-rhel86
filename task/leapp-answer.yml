@@ -1,0 +1,11 @@
+---
+- block:
+
+  - name: Remove kernel devel
+    ansible.builtin.yum:
+      name:
+        - kernel-devel*
+        - adobe-mapping*
+      state: absent
+  - name:
+    shell: package-cleanup –oldkernels

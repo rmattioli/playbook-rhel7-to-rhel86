@@ -1,0 +1,18 @@
+---
+
+- block:
+  - name: cockpit start
+    shell: service cockpit start
+
+  - name: Generate leapp preupgrade report
+    ansible.builtin.raw: leapp preupgrade
+    ignore_errors: false
+    register: leapp_preupgrade
+
+  - name: Generate leapp upgrade report
+    ansible.builtin.raw: leapp upgrade  --target=8.6
+    ignore_errors: false
+    register: leapp_upgrade
+
+  # ----------------------------------------
+  - import_tasks: ../task/reboot.yml

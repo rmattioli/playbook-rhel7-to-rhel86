@@ -1,20 +1,18 @@
+#!/usr/bin/env ansible-playbook
 ---
 - hosts: all
+  become: True
+  become_method: sudo
+  connection: ssh
+  vars:
+    color: brown
+
   tasks:
     - ansible.builtin.debug:
         msg: rhel7 to rhel 8
-
-- name: Include a play after another play
-  ansible.builtin.import_playbook: 01-preparing-rhel7-for-upgrade.yml
-
-- name: Update OS
-  ansible.builtin.import_playbook: 02-update-os.yml
-
-- name: install leapp
-  ansible.builtin.import_playbook: 03-install-leapp.yml
-
-- name: leapp audit
-  ansible.builtin.import_playbook: 04-leapp-audit.yml
-
-- name: upgrade
-  ansible.builtin.import_playbook: 05-install.yml
+    - import_tasks: ../task/01-preparing-rhel7-for-upgrade.yml
+    - import_tasks: ../task/02-update-os.yml
+    - import_tasks: ../task/03-install-leapp.yml
+    - import_tasks: ../task/04-leapp-audit.yml
+    - import_tasks: ../task/05-install.yml
+    - import_tasks: ../task/06-CheckPostUpgrade.yml

@@ -1,0 +1,15 @@
+---
+- block:
+  - name: Preparing a RHEL 7 system for the upgrade
+    shell:
+         subscription-manager refresh;
+         subscription-manager release;
+         subscription-manager attach --auto;
+         subscription-manager repos --enable rhel-7-server-rpms;
+         subscription-manager repos --enable rhel-7-server-extras-rpms;
+         subscription-manager release --unset;
+  - debug:
+      msg: "Read to update all packages to the latest RHEL 7 version"
+    when:
+      subscription-manager list | grep Version | grep -q "7.9"
+      subscription-manager list | grep Status | grep -q "Subscribed"
